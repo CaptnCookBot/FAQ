@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Captain Cook – FAQ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #0d1117;
+      color: #e6edf3;
+    }
+    h1 {
+      text-align: center;
+    }
+    details {
+      margin: 20px 0;
+      padding: 20px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+    }
+    summary {
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    img, video {
+      margin-top: 15px;
+      max-width: 100%;
+      border-radius: 6px;
+    }
+    a {
+      color: #58a6ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>📘 Captain Cook Bot – FAQ</h1>
+  <p>Welcome to the official FAQ for <strong>Captain Cook</strong>, your Solana-based trading assistant.<br>
+     From setting up your wallet to executing memecoin trades, everything you need is below.</p>
+
+  <details>
+    <summary>⚙️ How do I set up the bot?</summary>
+    <p>Use the <code>/start</code> command in Telegram. A wallet is generated and linked to your Telegram ID.</p>
+    <img src="images/setup.png" alt="Bot Setup Guide">
+  </details>
+
+  <details>
+    <summary>💰 How do I buy a token?</summary>
+    <p>Use <code>/buy $TOKEN</code> or tap the "Buy" button after a call. The bot will show price and fees before confirming.</p>
+    <video controls>
+      <source src="videos/how-to-buy.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </details>
+
+  <details>
+    <summary>📈 What is market cap filtering?</summary>
+    <p>Free users only see calls under 100k MC. VIP users get calls up to 5M MC with scoring and PnL tracking.</p>
+  </details>
+
+  <details>
+    <summary>🔐 How secure is my wallet?</summary>
+    <p>Each wallet is generated locally and stored encrypted. You can export your seed phrase at any time using <code>/backup</code>.</p>
+  </details>
+
+</body>
+</html>
