@@ -1,71 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Captain Cook – FAQ</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background: #0d1117;
-      color: #e6edf3;
-    }
-    h1 {
-      text-align: center;
-    }
-    details {
-      margin: 20px 0;
-      padding: 20px;
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-    }
-    summary {
-      font-size: 1.1em;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    img, video {
-      margin-top: 15px;
-      max-width: 100%;
-      border-radius: 6px;
-    }
-    a {
-      color: #58a6ff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captain Cook - FAQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 0 60px;
+            border-bottom: 2px solid #333;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #00d4ff;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Coming Soon Styles */
+        .coming-soon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            padding: 40px 0;
+        }
+
+        .countdown-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 60px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .countdown-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-container p {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .time-unit .number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .time-unit .label {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .notification-signup {
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .notification-signup p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-container {
+                padding: 40px 20px;
+            }
+
+            .countdown-container h2 {
+                font-size: 2rem;
+            }
+
+            .countdown {
+                gap: 15px;
+            }
+
+            .time-unit {
+                min-width: 80px;
+                padding: 15px;
+            }
+
+            .time-unit .number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            .faq-answer.active {
+                padding: 15px;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
 </head>
 <body>
-  <h1>📘 Captain Cook Bot – FAQ</h1>
-  <p>Welcome to the official FAQ for <strong>Captain Cook</strong>, your Solana-based trading assistant.<br>
-     From setting up your wallet to executing memecoin trades, everything you need is below.</p>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">🍳</div>
+            <h1>Captain Cook</h1>
+            <p class="subtitle">Solana Trading Bot - Frequently Asked Questions</p>
+            <div class="intro">
+                <p>Welcome to the Captain Cook FAQ! All frequently asked questions will be available on <strong>May 29th at 3:00 UTC</strong>. Get ready for comprehensive guides on setup, trading, wallet management, and more!</p>
+            </div>
+        </header>
 
-  <details>
-    <summary>⚙️ How do I set up the bot?</summary>
-    <p>Use the <code>/start</code> command in Telegram. A wallet is generated and linked to your Telegram ID.</p>
-    <img src="images/setup.png" alt="Bot Setup Guide">
-  </details>
 
-  <details>
-    <summary>💰 How do I buy a token?</summary>
-    <p>Use <code>/buy $TOKEN</code> or tap the "Buy" button after a call. The bot will show price and fees before confirming.</p>
-    <video controls>
-      <source src="videos/how-to-buy.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </details>
 
-  <details>
-    <summary>📈 What is market cap filtering?</summary>
-    <p>Free users only see calls under 100k MC. VIP users get calls up to 5M MC with scoring and PnL tracking.</p>
-  </details>
+        <!-- Coming Soon Message -->
+        <div class="coming-soon">
+            <div class="countdown-container">
+                <h2>🚀 FAQ Coming Soon!</h2>
+                <p>All frequently asked questions will be available on <strong>May 29th at 3:00 UTC</strong>.</p>
+                
+                <div class="countdown" id="countdown">
+                    <div class="time-unit">
+                        <span class="number" id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number" id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number" id="minutes">00</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="number" id="seconds">00</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
 
-  <details>
-    <summary>🔐 How secure is my wallet?</summary>
-    <p>Each wallet is generated locally and stored encrypted. You can export your seed phrase at any time using <code>/backup</code>.</p>
-  </details>
+                <div class="notification-signup">
+                    <p>Stay tuned for comprehensive guides on setup, trading, wallet management, and more!</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        // Countdown Timer
+        document.addEventListener('DOMContentLoaded', function() {
+            const targetDate = new Date('2025-05-29T03:00:00Z').getTime();
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                
+                if (distance < 0) {
+                    // Countdown finished - you can redirect or show FAQ content
+                    document.querySelector('.countdown-container').innerHTML = `
+                        <h2>🎉 FAQ is now available!</h2>
+                        <p>Please refresh the page to see all questions and answers.</p>
+                    `;
+                    return;
+                }
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            // Update countdown immediately and then every second
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
 </body>
 </html>
