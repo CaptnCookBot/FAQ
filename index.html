@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Captain Cook - FAQ</title>
+    <title>Captain Cook - Solana Trading Bot FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,190 +13,425 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: #e0e0e0;
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0A0F1C;
+            color: #FFFFFF;
             line-height: 1.6;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(127, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(127, 0, 255, 0.1) 0%, transparent 50%);
+            animation: bgShift 20s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { 
+                background: 
+                    radial-gradient(circle at 20% 80%, rgba(127, 0, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%);
+            }
+            50% { 
+                background: 
+                    radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 20%, rgba(127, 0, 255, 0.15) 0%, transparent 50%);
+            }
+        }
+
+        /* Container */
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem;
         }
 
         /* Header */
         .header {
             text-align: center;
-            padding: 40px 0 60px;
-            border-bottom: 2px solid #333;
-            margin-bottom: 40px;
+            padding: 4rem 0 6rem;
+            position: relative;
+        }
+
+        .logo-container {
+            margin: 0 auto 2rem;
+            width: 120px;
+            height: 120px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #00F0FF 0%, #7F00FF 100%);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+            position: relative;
+            box-shadow: 
+                0 0 40px rgba(0, 240, 255, 0.3),
+                0 0 80px rgba(127, 0, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: logoGlow 3s ease-in-out infinite alternate;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #00d4ff, #ffffff);
+        @keyframes logoGlow {
+            0% { 
+                box-shadow: 
+                    0 0 40px rgba(0, 240, 255, 0.3),
+                    0 0 80px rgba(127, 0, 255, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 60px rgba(0, 240, 255, 0.5),
+                    0 0 120px rgba(127, 0, 255, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+
+        .title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #00F0FF 50%, #7F00FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.02em;
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            color: #888;
-            margin-bottom: 30px;
+            font-size: 1.5rem;
+            color: #B0B5C0;
+            margin-bottom: 1rem;
+            font-weight: 400;
         }
 
-        .intro {
+        .description {
+            font-size: 1.1rem;
+            color: #B0B5C0;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .header-accent {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #00F0FF, #7F00FF);
+            margin: 0 auto;
+            border-radius: 1px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            animation: accentPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes accentPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 3rem;
+            position: relative;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 3rem 1.25rem 1.5rem;
             background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #00d4ff;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Coming Soon Styles */
-        .coming-soon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 60vh;
-            padding: 40px 0;
-        }
-
-        .countdown-container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 60px 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
-        }
-
-        .countdown-container h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #00d4ff, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .countdown-container p {
-            font-size: 1.3rem;
-            color: #ccc;
-            margin-bottom: 40px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-
-        .time-unit {
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            min-width: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            color: white;
+            font-size: 1rem;
+            font-family: inherit;
+            backdrop-filter: blur(20px);
             transition: all 0.3s ease;
         }
 
-        .time-unit:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        .search-input:focus {
+            outline: none;
+            border-color: #00F0FF;
+            box-shadow: 0 0 0 1px #00F0FF, 0 0 20px rgba(0, 240, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .time-unit .number {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #00d4ff;
-            margin-bottom: 5px;
+        .search-input::placeholder {
+            color: #B0B5C0;
         }
 
-        .time-unit .label {
-            font-size: 0.9rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .search-icon {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #B0B5C0;
+            font-size: 1.25rem;
         }
 
-        .notification-signup {
-            margin-top: 40px;
-            padding: 25px;
-            background: rgba(0, 212, 255, 0.05);
-            border-radius: 12px;
-            border-left: 4px solid #00d4ff;
+        /* FAQ Container */
+        .faq-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
-        .notification-signup p {
-            margin: 0;
+        /* FAQ Items */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 500;
             font-size: 1.1rem;
-            color: #e0e0e0;
+            transition: all 0.3s ease;
+            user-select: none;
         }
 
-        @media (max-width: 768px) {
-            .countdown-container {
-                padding: 40px 20px;
-            }
-
-            .countdown-container h2 {
-                font-size: 2rem;
-            }
-
-            .countdown {
-                gap: 15px;
-            }
-
-            .time-unit {
-                min-width: 80px;
-                padding: 15px;
-            }
-
-            .time-unit .number {
-                font-size: 2rem;
-            }
+        .faq-question:hover {
+            background: rgba(0, 240, 255, 0.05);
         }
 
-        /* Responsive */
+        .faq-question.active {
+            background: rgba(0, 240, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .question-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .question-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00F0FF, #7F00FF);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 16px rgba(0, 240, 255, 0.2);
+        }
+
+        .question-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            color: #00F0FF;
+        }
+
+        .chevron {
+            font-size: 1.5rem;
+            color: #00F0FF;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-answer.active {
+            max-height: 1000px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer-content {
+            padding-top: 1rem;
+            color: #B0B5C0;
+            line-height: 1.8;
+        }
+
+        .faq-answer p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer ol, .faq-answer ul {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer strong {
+            color: #00F0FF;
+            font-weight: 600;
+        }
+
+        .faq-answer code {
+            background: rgba(0, 240, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            color: #00F0FF;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        .command-box {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            color: #00F0FF;
+            font-size: 0.95rem;
+        }
+
+        .warning-tip {
+            background: rgba(255, 193, 7, 0.05);
+            border: 1px solid rgba(255, 193, 7, 0.2);
+            border-left: 4px solid #FFC107;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            color: #FFD54F;
+        }
+
+        .info-tip {
+            background: rgba(76, 175, 80, 0.05);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-left: 4px solid #4CAF50;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            color: #81C784;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 6rem;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #B0B5C0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: #00F0FF;
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .footer-text {
+            color: #B0B5C0;
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 1rem;
             }
 
-            h1 {
-                font-size: 2rem;
+            .header {
+                padding: 2rem 0 3rem;
+            }
+
+            .logo-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
             }
 
             .faq-question {
-                padding: 15px;
+                padding: 1.25rem;
+                font-size: 1rem;
+            }
+
+            .question-icon {
+                width: 32px;
+                height: 32px;
                 font-size: 1rem;
             }
 
             .faq-answer.active {
-                padding: 15px;
+                padding: 0 1.25rem 1.25rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
 
@@ -205,98 +441,294 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #1a1a1a;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #333;
+            background: linear-gradient(135deg, #00F0FF, #7F00FF);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            background: linear-gradient(135deg, #00D4E6, #6600CC);
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
+    
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <div class="logo">🍳</div>
-            <h1>Captain Cook</h1>
-            <p class="subtitle">Solana Trading Bot - Frequently Asked Questions</p>
-            <div class="intro">
-                <p>Welcome to the Captain Cook FAQ! All frequently asked questions will be available on <strong>May 29th at 3:00 UTC</strong>. Get ready for comprehensive guides on setup, trading, wallet management, and more!</p>
+            <div class="logo-container">
+                <div class="logo">
+                    <svg class="logo-image" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Magnifying Glass Handle -->
+                        <rect x="65" y="65" width="6" height="25" rx="3" transform="rotate(45 68 77.5)" fill="currentColor"/>
+                        <!-- Magnifying Glass Circle -->
+                        <circle cx="45" cy="45" r="25" stroke="currentColor" stroke-width="4" fill="none"/>
+                        <!-- Hair/Spikes around the circle -->
+                        <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M25 25 L18 18"/>
+                            <path d="M45 15 L45 8"/>
+                            <path d="M65 25 L72 18"/>
+                            <path d="M75 45 L82 45"/>
+                            <path d="M65 65 L72 72"/>
+                            <path d="M25 65 L18 72"/>
+                            <path d="M15 45 L8 45"/>
+                            <path d="M35 20 L30 12"/>
+                            <path d="M55 20 L60 12"/>
+                        </g>
+                        <!-- Purple dot in the center -->
+                        <circle cx="45" cy="45" r="8" fill="#7F00FF"/>
+                    </svg>
+                </div>
             </div>
+            <h1 class="title">Captain Cook</h1>
+            <p class="subtitle">Solana Trading Bot — Frequently Asked Questions</p>
+            <p class="description">The most advanced Telegram trading bot for Solana memecoins & degen trading.</p>
+            <div class="header-accent"></div>
         </header>
 
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search FAQ..." id="searchInput">
+            <div class="search-icon">🔍</div>
+        </div>
 
-
-        <!-- Coming Soon Message -->
-        <div class="coming-soon">
-            <div class="countdown-container">
-                <h2>🚀 FAQ Coming Soon!</h2>
-                <p>All frequently asked questions will be available on <strong>May 29th at 3:00 UTC</strong>.</p>
-                
-                <div class="countdown" id="countdown">
-                    <div class="time-unit">
-                        <span class="number" id="days">00</span>
-                        <span class="label">Days</span>
+        <!-- FAQ Container -->
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item" data-keywords="start begin setup launch first time" id="faq-1">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">🚀</div>
+                        <span><span class="question-number">1️⃣</span>How to start?</span>
                     </div>
-                    <div class="time-unit">
-                        <span class="number" id="hours">00</span>
-                        <span class="label">Hours</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="number" id="minutes">00</span>
-                        <span class="label">Minutes</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="number" id="seconds">00</span>
-                        <span class="label">Seconds</span>
-                    </div>
+                    <div class="chevron">▼</div>
                 </div>
-
-                <div class="notification-signup">
-                    <p>Stay tuned for comprehensive guides on setup, trading, wallet management, and more!</p>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>When you first launch the bot, simply type <code>/start</code>.</p>
+                        <p>The bot will automatically generate your personal wallet and display your wallet address along with your SOL balance.</p>
+                        <p>From the main menu, you can access all features: <strong>Buy</strong>, <strong>Sell</strong>, <strong>Positions</strong>, <strong>Settings</strong>, <strong>Withdraw</strong>, and <strong>Referral</strong>.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <script>
-        // Countdown Timer
-        document.addEventListener('DOMContentLoaded', function() {
-            const targetDate = new Date('2025-05-29T03:00:00Z').getTime();
-            
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-                
-                if (distance < 0) {
-                    // Countdown finished - you can redirect or show FAQ content
-                    document.querySelector('.countdown-container').innerHTML = `
-                        <h2>🎉 FAQ is now available!</h2>
-                        <p>Please refresh the page to see all questions and answers.</p>
-                    `;
-                    return;
-                }
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            }
-            
-            // Update countdown immediately and then every second
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        });
-    </script>
-</body>
-</html>
+            <!-- FAQ 2 -->
+            <div class="faq-item" data-keywords="deposit fund sol balance add money" id="faq-2">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">💰</div>
+                        <span><span class="question-number">2️⃣</span>How to deposit SOL?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>After using <code>/start</code>, your wallet address is displayed.</p>
+                        <p>To fund your account, simply send SOL from your exchange or personal wallet directly to this address.</p>
+                        <div class="warning-tip">
+                            <strong>⚠️ Warning:</strong> Always double-check the address before sending.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item" data-keywords="buy purchase token contract address ca trade" id="faq-3">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">📈</div>
+                        <span><span class="question-number">3️⃣</span>How to buy tokens?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Buying tokens is very simple:</p>
+                        <ol>
+                            <li><strong>Paste the token's Contract Address (CA)</strong> directly into the chat.</li>
+                            <li>The bot will automatically load the token details (price, market cap, liquidity, etc).</li>
+                            <li>You will see several preset buttons allowing you to buy with predefined amounts (e.g. 0.1 SOL, 0.5 SOL, 1 SOL, etc).</li>
+                            <li>You can also manually enter a custom amount by clicking <strong>✏️ X SOL</strong>.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item" data-keywords="sell tokens percentage position exit" id="faq-4">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">📉</div>
+                        <span><span class="question-number">4️⃣</span>How to sell tokens?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>After buying a token:</p>
+                        <ol>
+                            <li>Select the token from your positions.</li>
+                            <li>You will see several preset sell buttons based on percentages (10%, 25%, 50%, 75%, 100%).</li>
+                            <li>You can also click on <strong>✏️ X %</strong> to manually enter any custom percentage to sell.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item" data-keywords="pnl profit loss image generate trade history" id="faq-5">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">📊</div>
+                        <span><span class="question-number">5️⃣</span>How to check my PNL?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>To generate a PNL image for a trade:</p>
+                        <div class="command-box">
+                            Use the command:<br>
+                            <strong>/pnl [CONTRACT_ADDRESS]</strong><br><br>
+                            Example: <strong>/pnl 6MQpbiTC2YcogidTmKqMLK82qvE9z5QEm7EP3AEDpump</strong>
+                        </div>
+                        <div class="info-tip">
+                            <strong>ℹ️ Note:</strong> The bot will generate a PNL image only if you have traded this token.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item" data-keywords="fees transaction priority gas normal fast turbo custom" id="faq-6">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">⚡</div>
+                        <span><span class="question-number">6️⃣</span>How to configure fees?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Go to <strong>Settings → Fees</strong></p>
+                        <p>You can choose between 3 preset modes:</p>
+                        <ul>
+                            <li><strong>Normal</strong></li>
+                            <li><strong>Fast</strong></li>
+                            <li><strong>Turbo</strong> (highest priority)</li>
+                        </ul>
+                        <p>Higher fees allow faster transactions by prioritizing your transaction on-chain.</p>
+                        <p>You can also set a custom fee by clicking <strong>Custom Fees</strong> and entering your own amount (in SOL) for both buy and sell fees.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq-item" data-keywords="slippage price difference tolerance buy sell volatile" id="faq-7">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">🎯</div>
+                        <span><span class="question-number">7️⃣</span>How to configure slippage?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Go to <strong>Settings → Slippage</strong></p>
+                        <p>Slippage determines the price difference you're willing to accept between placing the order and execution.</p>
+                        <p>You can set different slippages for <strong>Buy</strong> and <strong>Sell</strong> operations.</p>
+                        <div class="info-tip">
+                            <strong>📊 Recommended values:</strong><br>
+                            • For low market cap / highly volatile tokens: <strong>15% - 40%</strong><br>
+                            • For safer tokens: lower slippage is enough.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="faq-item" data-keywords="autobuy automatic purchase enable disable amount sol" id="faq-8">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">🤖</div>
+                        <span><span class="question-number">8️⃣</span>How to activate AutoBuy?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>AutoBuy allows you to automatically buy a token when a CA is posted:</p>
+                        <p>Go to <strong>Settings → AutoBuy</strong></p>
+                        <p>You can:</p>
+                        <ul>
+                            <li>Enable or disable AutoBuy.</li>
+                            <li>Set the amount of SOL you want the bot to automatically buy with.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 9 -->
+            <div class="faq-item" data-keywords="presets buy sell buttons customize amounts strategy" id="faq-9">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">⚙️</div>
+                        <span><span class="question-number">9️⃣</span>How to configure Buy/Sell Presets?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Presets are the quick-buy/sell buttons you see under each token.</p>
+                        <p>Go to <strong>Settings → Presets</strong></p>
+                        <p>You can customize the preset amounts for both <strong>Buy</strong> and <strong>Sell</strong> to fit your strategy.</p>
+                        <p>You have <strong>5 Buy presets</strong> and <strong>5 Sell presets</strong> available.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 10 -->
+            <div class="faq-item" data-keywords="wallet address balance seed phrase import create backup" id="faq-10">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">👛</div>
+                        <span><span class="question-number">🔟</span>How to manage my Wallet?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Go to <strong>Settings → Wallet</strong></p>
+                        <p>You will see:</p>
+                        <ul>
+                            <li>Your wallet address</li>
+                            <li>Your balance</li>
+                            <li>Your Seed Phrase</li>
+                        </ul>
+                        <p>You can:</p>
+                        <ul>
+                            <li>Import an existing wallet</li>
+                            <li>Create a new wallet</li>
+                        </ul>
+                        <div class="warning-tip">
+                            <strong>⚠️ NEVER share your seed phrase with anyone!</strong><br><br>
+                            <strong>⚠️ Be careful:</strong> importing or creating a new wallet will delete the previous one stored on CaptainCook. Always back up your seed phrase before proceeding.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 11 -->
+            <div class="faq-item" data-keywords="positions portfolio holdings tokens owned current status" id="faq-11">
+                <div class="faq-question">
+                    <div class="question-content">
+                        <div class="question-icon">📋</div>
+                        <span><span class="question-number">1️⃣1️⃣</span>How to check my Positions?</span>
+                    </div>
+                    <div class="chevron">▼</div>
+                </div>
+                <div class="faq-
